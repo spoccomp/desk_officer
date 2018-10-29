@@ -25,6 +25,7 @@
       </ul>
     </div>  
   </nav>
+  <%# tab for sections %>
   <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link" href="/equipments">Equipment</a>
@@ -37,6 +38,18 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+<%# tabs for new,edit,delete, show and index which will display a list %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments/new">Add Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments/:id/edit">Edit/Delete Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">List Assignments</a>
   </li>
 </ul>
   <div>
