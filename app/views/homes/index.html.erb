@@ -1,0 +1,38 @@
+   <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      <%= image_tag("nypd patch.jpeg", class: "photo") %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+
+        <li class="nav-item">
+          <%= link_to 'Administration', admin_root_path, class: 'nav-links'  %>
+        
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+          
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+
+  <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  
+  <% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+  <% end %>

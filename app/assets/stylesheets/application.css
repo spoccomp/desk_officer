@@ -43,3 +43,41 @@
   .jumbotron {
     height: 100% !important;
   }
+  .devise-links {
+    color: rgb(51, 50, 50);
+  }
+  
+  .devise-head {
+    color: rgb(51, 50, 50);
+    text-align: center;
+    margin-top: 1em;
+  }
+  
+  .devise-links:hover {
+    text-decoration: none;
+    color: blue;
+  }
+  .photo {
+    height: 2.5em;
+    width: 2.0em;
+  }
+  .nav-bar {
+    background-color: lightblue;
+    padding-bottom: 1.7em;
+    color: black;
+  }
+  
+  .nav-links {
+    color: black;
+    font-size: 0.9em;
+    padding-left: 1em;
+  }
+  
+  .nav-links:hover {
+    color: rgb(51, 50, 50);
+    text-decoration: none;
+  }
+  
+  .hamburger {
+    background-color: black;
+  }

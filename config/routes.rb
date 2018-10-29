@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  
+  
+  devise_for :users, controllers: {
+    registration: 'users/registration',
+    sessions: 'users/sessions'
+  }
   namespace :admin do
       resources :assignments
       resources :equipment
@@ -10,6 +16,7 @@ Rails.application.routes.draw do
 
       root to: "assignments#index"
     end
+  get 'homes/index'
   root to: 'splashpages#index' 
   resources :assignments
   resources :equipments
