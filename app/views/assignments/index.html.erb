@@ -1,2 +1,50 @@
-<h1>Assignments#index</h1>
-<p>Find me in app/views/assignments/index.html.erb</p>
+   <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+  <div>
+    <h3 class="text-center time_admin">Welcome to Assignments Section</h3>
+    <h5 class="text-center time_admin">To start click on one of the TABS above</h5>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+     </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+  </div>

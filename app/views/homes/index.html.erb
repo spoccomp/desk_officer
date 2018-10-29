@@ -1,5 +1,6 @@
    <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
-      <%= image_tag("nypd patch.jpeg", class: "photo") %>
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon hamburger"></span>
       </button>
@@ -7,10 +8,6 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
       <% if current_user %>
-
-        <li class="nav-item">
-          <%= link_to 'Administration', admin_root_path, class: 'nav-links'  %>
-        
       </ul>
       <ul class="navbar-nav navbar-right">
 
@@ -22,13 +19,35 @@
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
         </li>
         <% else%>
-          
+
         <% end %>
 
       </ul>
     </div>  
   </nav>
-
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+  <div>
+    <h3 class="text-center time_admin">Welcome to the 62nd Precinct</h3>
+    <h5 class="text-center time_admin">To start click on one of the TABS above</h5>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+     </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+  </div>
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
   <% end %>
@@ -36,3 +55,13 @@
   <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
   <% end %>
+
+<div>
+  <h2 class="admin-jump text-center">
+          <strong>The Desk Officer Application</strong><br>
+					<strong>N.Y.P.D.</strong>
+	</h2>
+</div>
+<div class="text-center">
+  <%= image_tag("richShield.jpeg", class: "shields") %>
+</div> 

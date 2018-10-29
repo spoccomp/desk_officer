@@ -21,6 +21,10 @@
   .time_splash{
     font-size: 1.5em;
   }
+  .time_admin{
+    font-size: 1.5em;
+    color: blue;
+  }
  .splash {
     margin: .5em;
     text-align: center;
@@ -40,6 +44,12 @@
     font-size: 4em;
     padding-top: 1.4em;
   }
+  .admin-jump{
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 4em;
+    padding-top: 1.4em;
+    color: blue;
+  }
   .jumbotron {
     height: 100% !important;
   }
@@ -57,9 +67,13 @@
     text-decoration: none;
     color: blue;
   }
-  .photo {
+  .photo  {
     height: 2.5em;
     width: 2.0em;
+  }
+  .shields {
+    height: 16em;
+    width: 14em;
   }
   .nav-bar {
     background-color: lightblue;

@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registration: 'users/registration',
     sessions: 'users/sessions'
-  }
+  } 
+  
   namespace :admin do
       resources :assignments
       resources :equipment
