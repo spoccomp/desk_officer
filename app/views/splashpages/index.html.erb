@@ -1,0 +1,27 @@
+
+<%# /users/sign_in %>
+<a href="admin_root_path" class="splash">
+	<div class="row">
+   
+    
+		<div class="col-md-12 ">
+             <div class="text-center time_splash"><%= Time.now.strftime("%m/%d/%Y") %></div>
+             <div class="text-center time_splash"><%= Time.now.strftime("%H:%M") %></div>
+			<div class="jumbotron ">
+				<h2 class="splash-head">
+					<strong>N.Y.P.D.</strong>
+				</h2>
+        <%= image_tag("nypd patch.jpeg", class: "photo-splash") %>
+				
+                <div class="col-md-6 offset-md-3">
+					<div class="container">
+                    <br>
+						<h4>
+						The Finest Police Department in the world!
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</a>

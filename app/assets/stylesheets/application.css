@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ body {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.3em;
+    background-color: #d2d2d2;
+  }
+  .time_splash{
+    font-size: 1.5em;
+  }
+ .splash {
+    margin: .5em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: blue;
+    height: 75%;
+  }
+ .photo-splash {
+    height: 65%;
+    width: 85%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  }
+  .splash-head {
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 4em;
+    padding-top: 1.4em;
+  }
+  .jumbotron {
+    height: 100% !important;
+  }
