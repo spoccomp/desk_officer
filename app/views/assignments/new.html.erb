@@ -1,2 +1,202 @@
-<h1>Assignments#new</h1>
-<p>Find me in app/views/assignments/new.html.erb</p>
+   <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+  <%# tab for sections %>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+<%# tabs for new,edit,delete, show and index which will display a list %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments/new">Add Assignment</a>
+  </li>
+  <%# <li class="nav-item">
+    <a class="nav-link" href="/assignments/:id/edit">Edit/Delete Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">List Assignments</a>
+  </li> %>
+</ul>
+  <div>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+     </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+  </div><h1 class="text-center message">Create an Assignment</h1>
+<hr>
+<h4 class="text-center message">This will be used as a drop down item for creating roll calls</h4>
+<p class="text-center noticeCO">Please do not modify unless you are authorized by the Commanding Officer. Further direction provided by the ICO and XO</p>
+
+
+
+<%= form_with scope: :assignments, model: @assignment, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :foot_post %><br>
+    <%= form.text_field :foot_post %>
+  </div>
+ 
+  <div class="form-group">
+    <%= form.label :sector_A %><br>
+     <%= form.text_field :sector_A %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sector_B %><br>
+     <%= form.text_field :sector_B %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sector_C %><br>
+     <%= form.text_field :sector_C %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sector_D %><br>
+     <%= form.text_field :sector_D %>
+  </div>
+ 
+ <div class="form-group">
+    <%= form.label :station_house_clerk %><br>
+     <%= form.text_field :station_house_clerk %>
+  </div>
+  <div class="form-group">
+    <%= form.label :station_house_security %><br>
+     <%= form.text_field :station_hourse_security %>
+  </div>
+  <div class="form-group">
+    <%= form.label :telephone_switchboard_operator %><br>
+     <%= form.text_field :telephone_switchboard_operator %>
+  </div>
+  <div class="form-group">
+    <%= form.label :hospitalized_prisoner %><br>
+     <%= form.text_field :hospitalized_prisoner %>
+  </div>
+  <div class="form-group">
+    <%= form.label :DOA %><br>
+     <%= form.text_field :DOA %>
+  </div>
+  <div class="form-group">
+    <%= form.label :prisoner_clerk %><br>
+     <%= form.text_field :prisoner_clerk %>
+  </div>
+  <div class="form-group">
+    <%= form.label :EDP %><br>
+     <%= form.text_field :EDP %>
+  </div>
+  <div class="form-group">
+    <%= form.label :crime_scene %><br>
+     <%= form.text_field :crime_scene %>
+  </div>
+  <div class="form-group">
+    <%= form.label :special_post_A %><br>
+     <%= form.text_field :special_post_A %>
+  </div>
+  <div class="form-group">
+    <%= form.label :special_post_B %><br>
+     <%= form.text_field :special_post_B %>
+  </div>
+  <div class="form-group">
+    <%= form.label :special_post_C %><br>
+     <%= form.text_field :special_post_C %>
+  </div>
+  <div class="form-group">
+    <%= form.label :holiday_post_A %><br>
+     <%= form.text_field :holiday_post_A %>
+  </div>
+  <div class="form-group">
+    <%= form.label :holiday_post_B %><br>
+     <%= form.text_field :holiday_post_B %>
+  </div>
+  <div class="form-group">
+    <%= form.label :holiday_post_C %><br>
+     <%= form.text_field :holiday_post_C %>
+  </div>
+  <div class="form-group">
+    <%= form.label :desk_officer %><br>
+     <%= form.text_field :desk_officer %>
+  </div>
+  <div class="form-group">
+    <%= form.label :patrol_supervisor_1 %><br>
+     <%= form.text_field :patrol_supervisor_1 %>
+  </div>
+  <div class="form-group">
+    <%= form.label :patrol_supervisor_2 %><br>
+     <%= form.text_field :patrol_supervisor_2 %>
+  </div>
+  <div class="form-group">
+    <%= form.label :special_operations_supervisor %><br>
+     <%= form.text_field :special_operations_supervisor %>
+  </div>
+  <div class="form-group">
+    <%= form.label :commanding_officer %><br>
+     <%= form.text_field :commanding_officer %>
+  </div>
+  <div class="form-group">
+    <%= form.label :executive_officer %><br>
+     <%= form.text_field :executive_officer %>
+  </div>
+  <div class="form-group">
+    <%= form.label :integrity_control_officer %><br>
+     <%= form.text_field :itegrity_control_officer %>
+  </div>
+  <div class="form-group">
+    <%= form.label :community_affairs_supervisor %><br>
+     <%= form.text_field :community_affairs_supervisor %>
+  </div>
+  <div class="form-group">
+    <%= form.label :community_affairs_officer %><br>
+     <%= form.text_field :community_affairs_officer %>
+  </div>
+  <div class="form-group">
+    <%= form.label :domestic_violence_officer %><br>
+     <%= form.text_field :domestic_violence_officer %>
+  </div>
+  <div class="form-group">
+    <%= form.label :street_crime_suppression_supervisor %><br>
+     <%= form.text_field :street_crime_suppression_supervisor %>
+  </div>
+  <div class="form-group">
+    <%= form.label :street_crime_suppression_officer %><br>
+     <%= form.text_field :street_crime_suppression_officer %>
+  </div>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

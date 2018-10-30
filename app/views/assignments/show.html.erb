@@ -1,2 +1,113 @@
-<h1>Assignments#show</h1>
-<p>Find me in app/views/assignments/show.html.erb</p>
+   <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+  <%# tab for sections %>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+<%# tabs for new,edit,delete, show and index which will display a list %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments/new">Add Assignment</a>
+  </li>
+  <%# <li class="nav-item">
+    <a class="nav-link" href="/assignments/:id/edit">Edit/Delete Assignment</a>
+  </li> %>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">List Assignments</a>
+  </li>
+</ul>
+  <div>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+     </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+
+    <h4 class="text-center message">This will be used as a drop down item for creating roll calls</h4>
+<p class="text-center noticeCO">Please do not modify unless you are authorized by the Commanding Officer. Further direction provided by the ICO and XO</p>
+
+
+<hr>
+ <div class="container">
+  <div class="row"> 
+      <div class="col-4"> 
+      <div class="card border border-primary rounded" style="width: 18rem;"> 
+       <table>  
+            <% job = @assignment%>
+            <tr  class="list-group">
+            <td class="list-group-item">Assignment-ID: <%= job.id%> </td><br>
+            <td class="list-group-item">Foot Post: <%= job.foot_post%> </td>
+            <td class="list-group-item">Sector A: <%= job.sector_A%> </td>
+            <td class="list-group-item">Sector B: <%= job.sector_B%> </td>
+            <td class="list-group-item">Sector C: <%= job.sector_C%> </td>
+            <td class="list-group-item">Sector D: <%= job.sector_D%> </td>
+            <td class="list-group-item">Station House Clerk: <%= job.station_house_clerk%> </td>
+            <td class="list-group-item">Station House Security: <%= job.station_hourse_security%> </td>
+            <td class="list-group-item">Telephone Switchboard Operator: <%= job.telephone_switchboard_operator%> </td>
+            <td class="list-group-item">Hospitalized Prisoner: <%= job.hospitalized_prisoner%> </td>
+            <td class="list-group-item">DOA: <%= job.DOA %> </td>
+            <td class="list-group-item">Prisoner Clerk: <%= job.prisoner_clerk%> </td>
+            <td class="list-group-item">EDP: <%= job.EDP%> </td>
+            <td class="list-group-item">Crime Scene: <%= job.crime_scene%> </td>
+            <td class="list-group-item">Special Post A: <%= job.special_post_A%> </td>
+            <td class="list-group-item">Special Post B: <%= job.special_post_B%> </td>
+            <td class="list-group-item">Special Post C: <%= job.special_post_C%> </td>
+            <td class="list-group-item">Holiday Post A: <%= job.holiday_post_A%> </td>
+            <td class="list-group-item">Holiday Post B: <%= job.holiday_post_B%> </td>
+            <td class="list-group-item">Holiday Post C: <%= job.holiday_post_C%> </td>
+            <td class="list-group-item">D.O.: <%= job.desk_officer%> </td>
+            <td class="list-group-item">P.S. 1: <%= job.patrol_supervisor_1%> </td>
+            <td class="list-group-item">P.S. 2: <%= job.patrol_supervisor_2%> </td>
+            <td class="list-group-item">Special Ops LT: <%= job.special_operations_supervisor%> </td>
+            <td class="list-group-item">C.O. : <%= job.commanding_officer%> </td>
+            <td class="list-group-item">X.O. : <%= job.executive_officer%> </td>
+            <td class="list-group-item">I.C.O. : <%= job.integrity_control_officer%> </td>
+            <td class="list-group-item">CA Sgt. : <%= job.community_affairs_supervisor%> </td>
+            <td class="list-group-item">CA PO: <%= job.community_affairs_officer%> </td>
+            <td class="list-group-item">DVO : <%= job.domestic_violence_officer%> </td>
+            <td class="list-group-item">SCSU Sgt. : <%= job.street_crime_suppression_supervisor%> </td>
+            <td class="list-group-item">SCSU PO : <%= job.street_crime_suppression_officer%> </td>
+            </tr>
+        </table>
+      </div>
+      </div>
+   </div>
+</div>      
+<br>
+<%= link_to 'Dashboard', assignments_path(@assignments) %>

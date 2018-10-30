@@ -45,12 +45,12 @@
   <li class="nav-item">
     <a class="nav-link" href="/assignments/new">Add Assignment</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/assignments/:id/edit">Edit/Delete Assignment</a>
-  </li>
-  <li class="nav-item">
+  <%# <li class="nav-item"> %>
+    <%# <a class="nav-link" href="/assignments/:id/edit">Edit/Delete Assignment</a>
+  </li> %>
+  <%# <li class="nav-item">
     <a class="nav-link" href="/assignments">List Assignments</a>
-  </li>
+  </li> %>
 </ul>
   <div>
     <h3 class="text-center time_admin">Welcome to Assignments Section</h3>
@@ -61,3 +61,62 @@
     <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
     </div>
   </div>
+<h1 class="text-center message">List of Assignments</h1>
+<h4 class="text-center message">To edit or delete go to the bottom of the card</h4>
+<% if @assignments.blank? %>
+  <p> There are no assignments currently in the system.</p>
+<% else %>
+<div class="container">
+<div class="row"> 
+<% @assignments.each do |job|%>
+    <div class="col-4">
+        <div class="card border border-primary rounded" style="width: 18rem;">
+        <table>
+        <tr id="assignment<%= job.id %>" class="list-group">
+            <tr class="list-group">
+            <td class="list-group-item">Assignment-ID: <%= job.id%> </td><br>
+            <td class="list-group-item">Foot Post: <%= job.foot_post%> </td>
+            <td class="list-group-item">Sector A: <%= job.sector_A%> </td>
+            <td class="list-group-item">Sector B: <%= job.sector_B%> </td>
+            <td class="list-group-item">Sector C: <%= job.sector_C%> </td>
+            <td class="list-group-item">Sector D: <%= job.sector_D%> </td>
+            <td class="list-group-item">Station House Clerk: <%= job.station_house_clerk%> </td>
+            <td class="list-group-item">Station House Security: <%= job.station_hourse_security%> </td>
+            <td class="list-group-item">Telephone Switchboard Operator: <%= job.telephone_switchboard_operator%> </td>
+            <td class="list-group-item">Hospitalized Prisoner: <%= job.hospitalized_prisoner%> </td>
+            <td class="list-group-item">DOA: <%= job.DOA %> </td>
+            <td class="list-group-item">Prisoner Clerk: <%= job.prisoner_clerk%> </td>
+            <td class="list-group-item">EDP: <%= job.EDP%> </td>
+            <td class="list-group-item">Crime Scene: <%= job.crime_scene%> </td>
+            <td class="list-group-item">Special Post A: <%= job.special_post_A%> </td>
+            <td class="list-group-item">Special Post B: <%= job.special_post_B%> </td>
+            <td class="list-group-item">Special Post C: <%= job.special_post_C%> </td>
+            <td class="list-group-item">Holiday Post A: <%= job.holiday_post_A%> </td>
+            <td class="list-group-item">Holiday Post B: <%= job.holiday_post_B%> </td>
+            <td class="list-group-item">Holiday Post C: <%= job.holiday_post_C%> </td>
+            <td class="list-group-item">D.O.: <%= job.desk_officer%> </td>
+            <td class="list-group-item">P.S. 1: <%= job.patrol_supervisor_1%> </td>
+            <td class="list-group-item">P.S. 2: <%= job.patrol_supervisor_2%> </td>
+            <td class="list-group-item">Special Ops LT: <%= job.special_operations_supervisor%> </td>
+            <td class="list-group-item">C.O. : <%= job.commanding_officer%> </td>
+            <td class="list-group-item">X.O. : <%= job.executive_officer%> </td>
+            <td class="list-group-item">I.C.O. : <%= job.integrity_control_officer%> </td>
+            <td class="list-group-item">CA Sgt. : <%= job.community_affairs_supervisor%> </td>
+            <td class="list-group-item">CA PO: <%= job.community_affairs_officer%> </td>
+            <td class="list-group-item">DVO : <%= job.domestic_violence_officer%> </td>
+            <td class="list-group-item">SCSU Sgt. : <%= job.street_crime_suppression_supervisor%> </td>
+            <td class="list-group-item">SCSU PO : <%= job.street_crime_suppression_officer%> </td>
+            
+            <td><%= link_to 'Edit', edit_assignment_path(job.id) %></td>
+            <td><%= link_to 'Destroy', assignment_path(job.id), remote: true,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td><br>
+          </tr>
+        </table>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    
+  </div>
+<% end %>

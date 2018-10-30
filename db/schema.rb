@@ -95,10 +95,8 @@ ActiveRecord::Schema.define(version: 2018_10_29_020245) do
     t.bigint "tax_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "roll_call_id"
     t.bigint "rank_id"
     t.index ["rank_id"], name: "index_resources_on_rank_id"
-    t.index ["roll_call_id"], name: "index_resources_on_roll_call_id"
   end
 
   create_table "roll_calls", force: :cascade do |t|
@@ -121,9 +119,7 @@ ActiveRecord::Schema.define(version: 2018_10_29_020245) do
   end
 
   create_table "tours", force: :cascade do |t|
-    t.string "tour_1"
-    t.string "tour_2"
-    t.string "tour_3"
+    t.string "tour"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.bigint "roll_call_id"

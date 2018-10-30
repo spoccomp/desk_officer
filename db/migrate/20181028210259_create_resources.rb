@@ -6,7 +6,7 @@ class CreateResources < ActiveRecord::Migration[5.2]
       t.integer :tax_id, limit: 6
       t.timestamp :created_at 
       t.timestamp :updated_at 
-      t.references :roll_call, :rank
+      t.references :rank
     end
   end
 end

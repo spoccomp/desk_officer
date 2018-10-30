@@ -1,3 +1,23 @@
 // Place all the styles related to the Assignments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.3em;
+    background-color: #d2d2d2;
+    padding: 3em;
+  }
+  .time_splash{
+    font-size: 1.5em;
+  }
+  .time_admin{
+    font-size: 1.5em;
+    color: blue;
+  }
+  .message{
+    color: blue;
+  }
+  .noticeCO{
+      color:red;
+      background-color: yellow;
+  }
