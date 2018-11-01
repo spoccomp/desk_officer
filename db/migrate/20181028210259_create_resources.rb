@@ -4,9 +4,10 @@ class CreateResources < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.integer :tax_id, limit: 6
+      t.string :rank
       t.timestamp :created_at 
       t.timestamp :updated_at 
-      t.references :rank
+      # t.references :rank
     end
   end
 end

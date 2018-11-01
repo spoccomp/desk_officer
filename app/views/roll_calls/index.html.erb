@@ -45,9 +45,9 @@
   <li class="nav-item">
     <a class="nav-link" href="/roll_calls/new">Create a Roll Call</a>
   </li>
-  <li class="nav-item">
+  <%# <li class="nav-item">
     <a class="nav-link" href="/roll_calls/:id/edit">Edit/Delete Roll Call</a>
-  </li>
+  </li> %>
   <li class="nav-item">
     <a class="nav-link" href="/roll_calls">List Roll Call</a>
   </li>
@@ -64,3 +64,60 @@
     <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
     </div>
   </div>
+<% if @roll_calls.blank? %>
+  <p> There are no roll calls currently in the system.</p>
+<% else %>
+
+
+    <%@roll_calls.each do |rc| %>
+      <table class="table table-light table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Roll Call-ID</th>
+            <th scope="col">Tour</th>
+            <th scope="col">Resource</th>
+            <th scope="col">Assignment</th>
+            <th scope="col">RMP</th>
+            <th scope="col">Radio</th>
+            <th scope="col">Taser</th>
+            <th scope="col">Other Equipment</th>
+            <th scope="col">Other Equipment</th>
+            <th scope="col">Meal</th>
+            <th scope="col">Ring</th>
+            <th scope="col">EOT SIGN</th>
+            <th scope="col">DO FINAL ROLL CALL</th>
+            <th scope="col">Color of the Day</th>
+            <th scope="col">Return Date</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td> <%= rc.id %></td> 
+              <td> <%= rc.tour %> </td>
+              <td> <%= rc.resource %></td>  
+              <td> <%= rc.assignment %> 
+              <td> <%= rc.rmp %></td> 
+              <td> <%= rc.radio %></td> 
+              <td> <%= rc.taser %></td> 
+              <td> <%= rc.other_equip_1 %></td> 
+              <td> <%= rc.other_equip_2 %></td> 
+              <td> <%= rc.meal_period %></td> 
+              <td> <%= rc.rings %></td> 
+              <td> <%= rc.eot_sign_out %>___________</td> 
+              <td> <%= rc.roll_call_final %></td> 
+              <td> <%= rc.color_of_the_day %></td> 
+              <td> <%= rc.c_summons_return_date %></td> 
+              <td><%= link_to 'Edit', edit_roll_call_path(rc.id) %></td>
+              <td><%= link_to 'Destroy', roll_call_path(rc.id), remote: true,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td><br>     
+          </tr>
+        
+        </tbody>
+     </table>
+     <%end%>
+<%end%>
+
+
+

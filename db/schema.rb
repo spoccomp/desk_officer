@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_020245) do
+ActiveRecord::Schema.define(version: 2018_10_30_163250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,11 +49,9 @@ ActiveRecord::Schema.define(version: 2018_10_29_020245) do
     t.string "street_crime_suppression_officer"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "roll_call_id"
-    t.index ["roll_call_id"], name: "index_assignments_on_roll_call_id"
   end
 
-  create_table "equipment", force: :cascade do |t|
+  create_table "equipments", force: :cascade do |t|
     t.string "radio"
     t.string "rmp"
     t.string "van"
@@ -66,13 +64,8 @@ ActiveRecord::Schema.define(version: 2018_10_29_020245) do
     t.string "flares"
     t.string "traffic_cone"
     t.string "traffic_vest"
-    t.string "crime_scene_tape"
     t.string "property_jewelry_tag"
     t.string "property_security_tag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.bigint "roll_call_id"
-    t.index ["roll_call_id"], name: "index_equipment_on_roll_call_id"
   end
 
   create_table "ranks", force: :cascade do |t|
@@ -85,21 +78,26 @@ ActiveRecord::Schema.define(version: 2018_10_29_020245) do
     t.string "detective_3"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "resources_id"
-    t.index ["resources_id"], name: "index_ranks_on_resources_id"
   end
 
   create_table "resources", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.bigint "tax_id"
+    t.string "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "rank_id"
-    t.index ["rank_id"], name: "index_resources_on_rank_id"
   end
 
   create_table "roll_calls", force: :cascade do |t|
+    t.string "tour"
+    t.string "resource"
+    t.string "assignment"
+    t.string "rmp"
+    t.string "radio"
+    t.string "taser"
+    t.string "other_equip_1"
+    t.string "other_equip_2"
     t.string "meal_period"
     t.string "rings"
     t.string "eot_sign_out"
@@ -108,22 +106,12 @@ ActiveRecord::Schema.define(version: 2018_10_29_020245) do
     t.date "c_summons_return_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "resource_id"
-    t.bigint "assignment_id"
-    t.bigint "equipment_id"
-    t.bigint "tour_id"
-    t.index ["assignment_id"], name: "index_roll_calls_on_assignment_id"
-    t.index ["equipment_id"], name: "index_roll_calls_on_equipment_id"
-    t.index ["resource_id"], name: "index_roll_calls_on_resource_id"
-    t.index ["tour_id"], name: "index_roll_calls_on_tour_id"
   end
 
   create_table "tours", force: :cascade do |t|
     t.string "tour"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.bigint "roll_call_id"
-    t.index ["roll_call_id"], name: "index_tours_on_roll_call_id"
   end
 
   create_table "users", force: :cascade do |t|

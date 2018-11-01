@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
       resources :assignments
-      resources :equipment
+      resources :equipments
       resources :ranks
       resources :resources
       resources :roll_calls

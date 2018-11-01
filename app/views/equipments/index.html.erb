@@ -45,12 +45,12 @@
   <li class="nav-item">
     <a class="nav-link" href="/equipments/new">Add Equipment</a>
   </li>
-  <li class="nav-item">
+  <%# <li class="nav-item">
     <a class="nav-link" href="/equipments/:id/edit">Edit/Delete Equipment</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/equipments">List Equipment</a>
-  </li>
+  </li> %>
 </ul>
   <div>
     <h3 class="text-center time_admin">Welcome to Equipment Section</h3>
@@ -61,3 +61,52 @@
     <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
     </div>
   </div>
+
+
+    <%@equipments.each do |stuff| %>
+      <table class="table table-light table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Equipment-ID</th>
+            <th scope="col">Radio</th>
+            <th scope="col">RMP</th>
+            <th scope="col">VAN</th>
+            <th scope="col">Wagon</th>
+            <th scope="col">Scooter</th>
+            <th scope="col">Taser</th>
+            <th scope="col">Shield-Long</th>
+            <th scope="col">Mace</th>
+            <th scope="col">Memo-Book</th>
+            <th scope="col">Flares</th>
+            <th scope="col">Traffic-Cones</th>
+            <th scope="col">Traffic-Vest</th>
+            <th scope="col">Property-Jewelry-Tag</th>
+            <th scope="col">Property-Security-Tag</th>   
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td> <%= stuff.id %></td> 
+              <td> <%= stuff.radio %> </td>
+              <td> <%= stuff.rmp %></td>  
+              <td> <%=  stuff.van %> 
+              <td> <%= stuff.wagon %></td>
+              <td> <%= stuff.scooter %></td> 
+              <td> <%= stuff.taser %></td> 
+              <td> <%= stuff.shield_long %></td> 
+              <td> <%= stuff.mace %></td> 
+              <td> <%= stuff.memo_book %></td> 
+              <td> <%= stuff.flares %></td> 
+              <td> <%= stuff.traffic_cone %></td> 
+              <td> <%= stuff.traffic_vest %></td> 
+              <td> <%= stuff.property_jewelry_tag %></td> 
+              <td> <%= stuff.property_security_tag  %></td>  
+              <td><%= link_to 'Edit', edit_equipment_path(stuff.id) %></td>
+              <td><%= link_to 'Destroy', equipment_path(stuff.id), remote: true,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td><br>     
+          </tr>
+        
+        </tbody>
+     </table>
+     <%end%>

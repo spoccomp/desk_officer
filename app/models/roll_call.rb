@@ -1,4 +1,4 @@
 class RollCall < ApplicationRecord
      
-     has_one :tour, :assignments, :equipments, :resources
+    # has_many :resources
 end

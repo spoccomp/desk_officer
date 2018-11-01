@@ -1,2 +1,134 @@
 <h1>Equipments#edit</h1>
 <p>Find me in app/views/equipments/edit.html.erb</p>
+
+<nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+  <%# tab for sections %>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+<%# tabs for new,edit,delete, show and index which will display a list %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments/new">Add Assignment</a>
+  </li>
+  <%# <li class="nav-item">
+    <a class="nav-link" href="/assignments/:id/edit">Edit/Delete Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">List Assignments</a>
+  </li> %>
+</ul>
+  <div>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+     </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+    <h4 class="text-center message">This will be used as a drop down item for creating roll calls</h4>
+<p class="text-center noticeCO">Please do not modify unless you are authorized by the Commanding Officer. Further direction provided by the ICO and XO</p>
+
+
+<%= form_with scope: :equipments, model: @equipment, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :radio %><br>
+    <%= form.text_field :radio %>
+  </div>
+ 
+  <div class="form-group">
+    <%= form.label :rmp %><br>
+     <%= form.text_field :rmp %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :van %><br>
+     <%= form.text_field :van %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :wagon %><br>
+     <%= form.text_field :wagon %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :scooter %><br>
+     <%= form.text_field :scooter %>
+  </div>
+ 
+ <div class="form-group">
+    <%= form.label :taser %><br>
+     <%= form.text_field :taser %>
+  </div>
+  <div class="form-group">
+    <%= form.label :shield_long %><br>
+     <%= form.text_field :shield_long %>
+  </div>
+  <div class="form-group">
+    <%= form.label :mace %><br>
+     <%= form.text_field :mace %>
+  </div>
+  <div class="form-group">
+    <%= form.label :memo_book %><br>
+     <%= form.text_field :memo_book %>
+  </div>
+  <div class="form-group">
+    <%= form.label :flares%><br>
+     <%= form.text_field :flares %>
+  </div>
+  <div class="form-group">
+    <%= form.label :traffic_cone %><br>
+     <%= form.text_field :traffic_cone %>
+  </div>
+  <div class="form-group">
+    <%= form.label :traffic_vest %><br>
+     <%= form.text_field :traffic_vest %>
+  </div>
+  <div class="form-group">
+    <%= form.label :property_jewelry_tag %><br>
+     <%= form.text_field :property_jewelry_tag %>
+  </div>
+  <div class="form-group">
+    <%= form.label :property_security_tag %><br>
+     <%= form.text_field :property_security_tag %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

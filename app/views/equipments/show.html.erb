@@ -1,2 +1,95 @@
-<h1>Equipments#show</h1>
-<p>Find me in app/views/equipments/show.html.erb</p>
+ <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+<%# tab for sections %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+<%# tabs for new,edit,delete, show and index which will display a list %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments/new">Add Equipment</a>
+  </li>
+<%# <li class="nav-item"> 
+    <a class="nav-link" href="/equipments/:id/edit">Edit/Delete Equipment</a>
+  </li> %>
+ <li class="nav-item">
+    <a class="nav-link" href="/equipments">List Equipment</a>
+  </li> 
+</ul>
+  <div>
+    <h3 class="text-center time_admin">Welcome to Equipment Section</h3>
+    <h5 class="text-center time_admin">To start click on one of the TABS above</h5>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+     </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+  </div>
+
+<hr>
+ <div class="container">
+  <div class="row"> 
+      <div class="col-4"> 
+      <div class="card border border-primary rounded" style="width: 18rem;"> 
+       <table>  
+            <% job = @equipment%>
+            <tr  class="list-group">
+            <td class="list-group-item">Equipment-ID: <%= job.id%> </td><br>
+            <td class="list-group-item">Radio: <%= job.radio%> </td>
+            <td class="list-group-item">RMP: <%= job.rmp%> </td>
+            <td class="list-group-item">VAN: <%= job.van%> </td>
+            <td class="list-group-item">Wagon: <%= job.wagon%> </td>
+            <td class="list-group-item">Scooter: <%= job.scooter%> </td>
+            <td class="list-group-item">Taser: <%= job.taser%> </td>
+            <td class="list-group-item">Shield Long: <%= job.shield_long%> </td>
+            <td class="list-group-item">Mace: <%= job.mace%> </td>
+            <td class="list-group-item">Memo Book: <%= job.memo_book%> </td>
+            <td class="list-group-item">Flares: <%= job.flares %> </td>
+            <td class="list-group-item">Traffic Cone: <%= job.traffic_cone%> </td>
+            <td class="list-group-item">Traffic Vest: <%= job.traffic_vest%> </td>
+            <td class="list-group-item">Property Jewelry Tag: <%= job.property_jewelry_tag%> </td>
+            <td class="list-group-item">Property Security Tag : <%= job.property_security_tag %> </td>
+            </tr>
+        </table>
+      </div>
+      </div>
+   </div>
+</div>      
+<br>
+<%= link_to 'Dashboard', equipments_path(@equipments) %>

@@ -10,7 +10,7 @@ class CreateRanks < ActiveRecord::Migration[5.2]
       t.string :detective_3
       t.timestamp :created_at 
       t.timestamp :updated_at 
-      t.references :resources
+      # t.references :resources
     end
   end
 end

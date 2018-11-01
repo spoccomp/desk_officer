@@ -1,2 +1,116 @@
-<h1>RollCalls#show</h1>
-<p>Find me in app/views/roll_calls/show.html.erb</p>
+   <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+  <%# tab for sections %>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+<%# tabs for new,edit,delete, show and index which will display a list %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls/new">Create a Roll Call</a>
+  </li>
+  <%# <li class="nav-item">
+    <a class="nav-link" href="/roll_calls/:id/edit">Edit/Delete Roll Call</a>
+  </li> %>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">List Roll Call</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Print Roll Call</a>
+  </li>
+</ul>
+  <div>
+    <h3 class="text-center time_admin">Welcome to the Roll Call Section</h3>
+    <h5 class="text-center time_admin">To start click on one of the TABS above</h5>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+     </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+  </div>
+<hr>
+   <% rc = @roll_call%>
+      <table class="table table-light table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Roll Call-ID</th>
+            <th scope="col">Tour</th>
+            <th scope="col">Resource</th>
+            <th scope="col">Assignment</th>
+            <th scope="col">RMP</th>
+            <th scope="col">Radio</th>
+            <th scope="col">Taser</th>
+            <th scope="col">Other Equipment</th>
+            <th scope="col">Other Equipment</th>
+            <th scope="col">Meal</th>
+            <th scope="col">Ring</th>
+            <th scope="col">EOT SIGN</th>
+            <th scope="col">DO FINAL ROLL CALL</th>
+            <th scope="col">Color of the Day</th>
+            <th scope="col">Return Date</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td> <%= rc.id %></td> 
+              <td> <%= rc.tour %> </td>
+              <td> <%= rc.resource %></td>  
+              <td> <%= rc.assignment %> 
+              <td> <%= rc.rmp %></td> 
+              <td> <%= rc.radio %></td> 
+              <td> <%= rc.taser %></td> 
+              <td> <%= rc.other_equip_1 %></td> 
+              <td> <%= rc.other_equip_2 %></td> 
+              <td> <%= rc.meal_period %></td> 
+              <td> <%= rc.rings %></td> 
+              <td> <%= rc.eot_sign_out %>___________</td> 
+              <td> <%= rc.roll_call_final %></td> 
+              <td> <%= rc.color_of_the_day %></td> 
+              <td> <%= rc.c_summons_return_date %></td>     
+          </tr>
+        
+        </tbody>
+     </table>
+
+
+<%= link_to 'Dashboard', roll_calls_path(@roll_calls) %>
+
+
+

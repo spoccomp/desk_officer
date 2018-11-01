@@ -45,12 +45,12 @@
   <li class="nav-item">
     <a class="nav-link" href="/resources/new">Add Resources</a>
   </li>
-  <li class="nav-item">
+  <%# <li class="nav-item">
     <a class="nav-link" href="/resources/:id/edit">Edit/Delete Resources</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/resources">List Resources</a>
-  </li>
+  </li> %>
 </ul>
   <div>
     <h3 class="text-center time_admin">Welcome to the Resources Section</h3>
@@ -61,3 +61,37 @@
     <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
     </div>
   </div>
+<h1 class="text-center message">List of Resources</h1>
+<h4 class="text-center message">To edit or delete go to the record</h4>
+
+
+
+ <h5 class="text-center message">Total Pct Resources <%= @resources_size%></h5>
+    <%@resources.each do |peeps| %>
+      <table class="table table-light table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Resource-ID</th>
+            <th scope="col">Rank</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Tax ID</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td> <%= peeps.id %></td> 
+              <td> <%= peeps.rank %> </td>
+              <td> <%= peeps.first_name %></td>  
+              <td> <%=  peeps.last_name %> 
+              <td> <%= peeps.tax_id %></td> 
+              <td><%= link_to 'Edit', edit_resource_path(peeps.id) %></td>
+              <td><%= link_to 'Destroy', resource_path(peeps.id), remote: true,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td><br>     
+          </tr>
+        
+        </tbody>
+     </table>
+     <%end%>

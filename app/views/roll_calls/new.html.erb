@@ -1,2 +1,148 @@
-<h1>RollCalls#new</h1>
-<p>Find me in app/views/roll_calls/new.html.erb</p>
+ <nav class="navbar navbar-expand-md nav-bar shadow mb-2 rounded">
+      
+      <%= link_to image_tag("nypd patch.jpeg", :alt => "NYPD Shield", class: "photo" ), homes_index_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon hamburger"></span>
+      </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+
+        <li class="nav-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-links' %> 
+        </li>
+     
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-links' %>
+        </li>
+        <% else%>
+
+        <% end %>
+
+      </ul>
+    </div>  
+  </nav>
+  <%# tab for sections %>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/equipments">Equipment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/assignments">Assignment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resources">Resources</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Roll Call</a>
+  </li>
+</ul>
+<%# tabs for new,edit,delete, show and index which will display a list %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls/new">Create a Roll Call</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">List Roll Call</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/roll_calls">Print Roll Call</a>
+  </li>
+</ul>
+
+  <div>
+     <div class="text-center time_admin"><%= Time.now.strftime("%m/%d/%Y") %>
+  </div>
+             
+    <div class="text-center time_admin"><%= Time.now.strftime("%H:%M") %>
+    </div>
+  </div><h1 class="text-center message">Create a Roll Call</h1>
+<hr>
+
+<p class="text-center noticeCO">Please do not modify unless you are authorized by the Commanding Officer. Further direction provided by the ICO and XO</p>
+
+
+<%= form_with scope: :roll_calls, model: @roll_call, local: true do |form| %>
+<%# choose Tour %>
+  <div class="form-group">
+   <%= form.label :Tour %><br>
+   <%= form.select(:tour, options_for_select([['Tour-1 2400x0800'], ['Tour-2 0800x1600'], ['Tour-3 1600x2400'], ['Tour-4 1800x0200']]), { include_blank: true }) %>
+  </div>
+<%# resources and rank %>
+  <div class="form-group">
+    <%= form.label :resources %>
+    <select name= "resource" >
+        <%= @resources.each do |cop| %>
+        <option value="<%= cop.id%>"> <%= cop.first_name %> <%=cop.last_name %> <%=cop.rank %></option>  
+        <% end %>
+    </select> 
+  </div>
+ <%# assignment %>
+ <div class="form-group">
+        <%= form.label :assignment %>
+        <%= form.select(:assignment, options_for_select([['Foot Post'], ['Sector'], ['SHS'], ['SHC'], ['TS'], ['Hospitalized Prisoner'], ['DOA'], ['EDP'], ['Special Post'], ['Holiday Post'], ['DO'], ['PS1'], ['PS2'], ['SOS'], ['CO'], ['XO'], ['ICO'], ['CA SGT'], ['CA Officer'], ['DVO'], ['SCSU SGT'], ['SCSU Officer']]), { include_blank: true }) %>
+  </div> 
+<%# choose RMP number %>
+  <div class="form-group">
+    <%= form.label :rmp %><br>
+    <%= form.text_field :rmp %>
+  </div>
+<%# choose Radio number%>
+  <div class="form-group">
+    <%= form.label :Radio_Number %><br>
+    <%= form.text_field :radio %>    
+  </div>
+  <%# choose Taser number %>
+  <div class="form-group">
+    <%= form.label :Taser_Number %><br>
+    <%= form.text_field :taser %>  
+  </div>
+  <%# choose equipment4 %>
+  <div class="form-group">
+   <%= form.label :Other_Equipment %><br>
+   <%= form.select(:other_equip_1, options_for_select([['Sheild-Long'], ['Mace'], ['Memo-Book'], ['Flares'], ['Traffic-Cones'], ['Traffic-Vest'], ['Property-Jewelry-Tag'], ['Property-Security-Tag'], ['Helmet'], ['Crime Scene Tap'], ['DOA tape'], ['DOA toe tag']]), { include_blank: true }) %>
+  </div>
+<%# choose equipment5 %>
+  <div class="form-group">
+    <%= form.label :Other_Equipment %><br>
+   <%= form.select(:other_equip_2, options_for_select([['Sheild-Long'], ['Mace'], ['Memo-Book'], ['Flares'], ['Traffic-Cones'], ['Traffic-Vest'], ['Property-Jewelry-Tag'], ['Property-Security-Tag'], ['Helmet'], ['Crime Scene Tap'], ['DOA tape'], ['DOA toe tag']]), { include_blank: true }) %>
+  </div>
+ <%# choose Meal Period %>
+  <div class="form-group">
+    <%= form.label :Meal %><br>
+    <%= form.text_field :meal_period %>  
+  </div>
+<%# choose Ring %>
+  <div class="form-group">
+    <%= form.label :Ring %><br>
+    <%= form.text_field :rings%>  
+  </div>
+  <%# choose EOT Sign out %>
+  <div class="form-group">
+    <%= form.label :EOT_sign_out_with_your_name %><br>
+    <%= form.text_field :eot_sign_out %>  
+  </div>
+   <%# choose roll call final edition %>
+  <div class="form-group">
+    <%= form.label :Roll_Call_Final_SGT_Initial%><br>
+    <%= form.text_field :roll_call_final %>  
+  </div>
+   <%# choose Color of the day %>
+  <div class="form-group">
+    <%= form.label :Color_of_the_day%><br>
+    <%= form.text_field :color_of_the_day %>  
+  </div>
+   <%# choose Return date for C-Summons %>
+  <div class="form-group">
+    <p>Today's Date: <%= Time.now.strftime("%m/%d/%Y") %> </p>
+    <h6>Add thirty days to today's date, if that date falls on a weekend, enter the date of the Monday. All return dates are from Monday-Friday and no holidays!</h6>
+    <%= form.label :Return_Date_for_Criminal_Summons%><br>
+    <%= form.date_field :c_summons_return_date %>  
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
